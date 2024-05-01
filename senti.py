@@ -24,7 +24,7 @@ def predict_sentiment(input_data: InputData):
     text = input_data.text
 
     text = cleaned_text(text)
-    sentiment = model.trained_model.predict(text)[0]
+    sentiment = model.trained_model.predict(text)[0] # Prédiction uvicorn senti:app --reload
     sentiment_label = "Negative" if sentiment == 0 else "Positive"
 
     return {"sentiment": sentiment_label}
