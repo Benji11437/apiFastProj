@@ -3,7 +3,7 @@ from joblib import load
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+import uvicorn
 
 df =  pd.read_csv('df_c.csv')
 
@@ -38,5 +38,7 @@ def predict(data : request_body):
     # Je retourne si le twitt est positif ou negatif
     return {'target' : df.target[class_idx]}
     
-
+if __name__ == '__main__':
+    uvicorn.run('myapp:app', host='0.0.0.0', port=8000)
+    uvicorn.run('main:app', host='0.0.0.0', port=8000)
 
